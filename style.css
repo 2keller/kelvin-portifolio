@@ -1,0 +1,680 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif; /* Body font */
+    color: #F0F0F0; /* Off-white for general text */
+    background-color: #000000; /* Deep Black canvas */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from transitions */
+}
+
+/* Headings and Special Text */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Creative heading font */
+    color: #FFD700; /* Rich Gold for headings */
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 3.5em; /* Large for impact */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); /* Subtle gold glow */
+}
+
+h2 {
+    font-size: 2em;
+    color: #F0F0F0; /* Secondary heading can be off-white for contrast */
+}
+
+p {
+    font-size: 1.1em;
+    color: #D3D3D3; /* Lighter gray for paragraphs */
+}
+
+/* --- Header and Navigation --- */
+.main-header {
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black for header */
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #FFD700; /* Gold logo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #B8860B; /* Muted gold on hover */
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: #F0F0F0; /* Off-white for nav links */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after { /* Underline effect for nav links */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #FFD700; /* Gold underline */
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #FFD700; /* Gold on hover and active */
+}
+
+/* --- Home Hero Section --- */
+.home-hero {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px; /* Offset for fixed header */
+    position: relative;
+    overflow: hidden; /* Important for background effects */
+}
+
+/* Painting-like subtle background effect */
+.home-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 40%);
+    background-size: 200% 200%;
+    animation: backgroundShift 20s ease-in-out infinite alternate;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+    animation: fadeInScale 1s ease-out forwards; /* Initial reveal animation */
+    opacity: 0; /* Start hidden for animation */
+    transform: scale(0.95); /* Start slightly scaled down */
+}
+
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.hero-content h1 {
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 20px auto 30px auto;
+}
+
+/* Primary Button Style */
+.btn-primary {
+    display: inline-block;
+    background-color: #FFD700; /* Gold button */
+    color: #000000; /* Black text on button */
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); /* Gold shadow */
+}
+
+.btn-primary:hover {
+    background-color: #B8860B; /* Muted gold on hover */
+    color: #F0F0F0; /* Off-white text on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1A1A1A; /* Dark gray for footer */
+    color: #D3D3D3; /* Lighter gray for footer text */
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Subtle gold line */
+}
+
+/* Basic Responsiveness (for smaller screens) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links li {
+        margin: 0 15px 10px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+/* --- General Content Section Styling (for about, resume, etc.) --- */
+.content-section {
+    max-width: 900px;
+    margin: 120px auto 60px auto; /* Top margin for fixed header, auto for horizontal centering */
+    padding: 40px;
+    background-color: rgba(10, 10, 10, 0.7); /* Slightly lighter black with transparency */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); /* Subtle gold glow */
+    position: relative; /* For potential internal animations */
+    overflow: hidden; /* Ensure content stays within bounds */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    position: relative;
+    color: #FFD700;
+}
+
+.section-title::after { /* Gold underline for section titles */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #FFD700;
+    border-radius: 2px;
+}
+
+.sub-section-title {
+    font-size: 1.8em;
+    color: #FFD700; /* Gold for sub-headings */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2); /* Subtle gold line */
+    padding-bottom: 5px;
+}
+
+/* --- About Page Specific Styling --- */
+.about-bio-container .bio-paragraph {
+    margin-bottom: 30px;
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Individual paragraph animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.about-bio-container .bio-paragraph:nth-child(2) { animation-delay: 0.2s; }
+.about-bio-container .bio-paragraph:nth-child(3) { animation-delay: 0.4s; }
+.about-bio-container .bio-paragraph:nth-child(4) { animation-delay: 0.6s; }
+
+/* --- Resume Page Specific Styling --- */
+.resume-container {
+    padding: 30px;
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed rgba(255, 215, 0, 0.3); /* Artistic dashed line */
+}
+
+.resume-header h2 {
+    font-size: 2.5em;
+    color: #FFD700;
+    margin-bottom: 5px;
+}
+
+.resume-header p {
+    font-size: 1em;
+    line-height: 1.8;
+}
+
+.resume-header a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.resume-header a:hover {
+    color: #B8860B;
+    text-decoration: underline;
+}
+
+.resume-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Individual section animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.resume-section:last-child {
+    border-bottom: none; /* No border for the last section */
+}
+
+/* Delay animations for sections */
+.resume-section:nth-of-type(1) { animation-delay: 0.2s; } /* Profile */
+.resume-section:nth-of-type(2) { animation-delay: 0.4s; } /* Education */
+.resume-section:nth-of-type(3) { animation-delay: 0.6s; } /* Volunteering */
+.resume-section:nth-of-type(4) { animation-delay: 0.8s; } /* Skills */
+.resume-section:nth-of-type(5) { animation-delay: 1.0s; } /* Hobbies */
+
+
+.resume-section h3 {
+    font-size: 1.5em;
+    color: #FFD700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resume-item {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 3px solid rgba(255, 215, 0, 0.3); /* Gold line to the left */
+}
+
+.resume-item h4 {
+    color: #F0F0F0;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.resume-item .duration {
+    font-style: italic;
+    color: #D3D3D3;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.resume-item ul {
+    list-style: none; /* Remove default bullet */
+    padding-left: 0;
+}
+
+.resume-item ul li::before { /* Custom gold bullet */
+    content: '\2022'; /* Unicode for bullet */
+    color: #FFD700;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.skills-grid ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-grid ul li {
+    margin-bottom: 8px;
+}
+
+.skills-grid ul li strong {
+    color: #FFD700;
+}
+
+.download-resume-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Secondary Button Style (for download resume) */
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: #FFD700; /* Gold text */
+    border: 2px solid #FFD700; /* Gold border */
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); /* Subtle gold glow */
+}
+
+.btn-secondary:hover {
+    background-color: #FFD700; /* Gold background on hover */
+    color: #000000; /* Black text on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5); /* Stronger gold shadow */
+}
+
+
+/* Reusable Animations for sections/elements */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ensure body has a smooth transition for background if needed, but not for page load */
+html {
+    scroll-behavior: smooth; /* For smooth internal jumps */
+}
+
+/* --- Projects Page Specific Styling --- */
+.section-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1em;
+    color: #D3D3D3;
+    line-height: 1.8;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* Space between project cards */
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background-color: rgba(26, 26, 26, 0.8); /* Darker background for cards */
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.1); /* Deeper shadow with gold glow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer links to bottom */
+
+    /* Animation on load */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+/* Stagger animation for project cards */
+.projects-grid .project-card:nth-child(1) { animation-delay: 0.1s; }
+.projects-grid .project-card:nth-child(2) { animation-delay: 0.2s; }
+.projects-grid .project-card:nth-child(3) { animation-delay: 0.3s; }
+/* Add more delays for more cards:
+.projects-grid .project-card:nth-child(4) { animation-delay: 0.4s; }
+*/
+
+
+.project-card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 215, 0, 0.3); /* Enhanced shadow and glow */
+    border: 1px solid rgba(255, 215, 0, 0.4); /* Subtle gold border on hover */
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 180px; /* Fixed height for image area */
+    background-color: rgba(255, 215, 0, 0.05); /* Very subtle gold placeholder background */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFD700;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    border: 1px dashed rgba(255, 215, 0, 0.2);
+}
+
+.project-image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    object-fit: cover; /* Ensures images cover the area without distortion */
+}
+
+
+.project-title {
+    color: #FFD700;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    color: #D3D3D3;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows description to take up available space */
+}
+
+.project-tech-stack {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.project-tech-stack span {
+    display: inline-block;
+    background-color: rgba(255, 215, 0, 0.1); /* Light gold background for tags */
+    color: #FFD700;
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 5px;
+    white-space: nowrap; /* Prevent tags from breaking */
+}
+
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-project {
+    display: inline-block;
+    background-color: #000000; /* Black background for project buttons */
+    color: #FFD700; /* Gold text */
+    border: 1px solid #FFD700; /* Gold border */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.1);
+}
+
+.btn-project:hover {
+    background-color: #FFD700; /* Gold background on hover */
+    color: #000000; /* Black text on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+}
+
+
+/* --- Contact Page Specific Styling --- */
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.intro-message {
+    max-width: 700px;
+    font-size: 1.15em;
+    color: #F0F0F0;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.contact-info-block {
+    background-color: rgba(26, 26, 26, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Animation on load */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+/* Stagger animation for contact blocks */
+.contact-info-block:nth-child(2) { animation-delay: 0.3s; }
+.contact-info-block:nth-child(3) { animation-delay: 0.5s; }
+.contact-info-block:nth-child(4) { animation-delay: 0.7s; }
+
+
+.contact-info-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.25);
+}
+
+.contact-info-block h2 {
+    color: #FFD700;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.contact-info-block p {
+    font-size: 1.1em;
+    color: #D3D3D3;
+}
+
+.contact-link {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #B8860B;
+    text-decoration: underline;
+}
+
+.tip {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 5px;
+}
+
+.email-address {
+    word-break: break-all; /* Ensures long emails break to next line */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column for projects on small screens */
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .projects-grid {
+        gap: 30px;
+    }
+
+    .contact-content {
+        padding: 10px;
+    }
+
+    .contact-info-block {
+        padding: 25px;
+    }
+}
+
